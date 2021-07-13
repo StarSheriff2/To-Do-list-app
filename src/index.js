@@ -27,5 +27,6 @@ const addTasktoDisplay = (task) => {
   toDoListDisplay.innerHTML += `<li class="to-do-list__item" id="${task.index}">${task.description}</li>`;
 }
 
-TO_DO_LIST_TASKS.forEach(task => addTasktoDisplay(task));
+window.onload = TO_DO_LIST_TASKS.forEach(task => addTasktoDisplay(task));
+
 
