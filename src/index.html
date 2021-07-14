@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/2bdc450678.js" crossorigin="anonymous"></script>
   <title>To-Do List App</title>
 </head>
-<body>
-  <h1>To Do list</h1>
 
-  <ul class="to-do-list">
-    <li class="to-do-list__item"></li>
-  </ul>
+<body>
+  <main class="main-app">
+    <div class="main-app__title-section-wrapper">
+      <h1 class="main-app__title">To Do list</h1>
+      <button type="button" class="main-app__refresh-btn"><i class="fas fa-sync"></i></button>
+    </div>
+    <form action="#" class="main-app__form">
+      <input type="text" name="task" id="task" placeholder="Add to your list..." class="main-app__form__input" required>
+      <img src="./images/enter-icon.png" alt="enter icon" class="main-app__form__icon">
+    </form>
+    <ul class="main-app__to-do-list">
+      <form action="#" class="to-do-list__form">
+        <li class="to-do-list__item" id="1">
+          <input type="checkbox" name="remove-task" id="remove-task" value="1" class="to-do-list__form__input">
+          <span class="to-do-list__item__task">take fluffy to the vet</span>
+          <i class="to-do-list__item__icon fas fa-ellipsis-v"></i>
+        </li>
+      </form>
+    </ul>
+  </main>
 </body>
+
 </html>

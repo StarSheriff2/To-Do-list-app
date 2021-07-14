@@ -1,3 +1,75 @@
-.to-do-list {
-  color: blue;
+/* Global Stylings */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.6rem;
+}
+
+.main-app {
+  min-width: 400px;
+  max-width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20% auto;
+  border: solid lightgrey 1px;
+}
+
+.main-app__title-section-wrapper,
+.main-app__form,
+.main-app__form__input,
+.main-app__to-do-list {
+  width: 100%;
+}
+
+.main-app__title-section-wrapper,
+.main-app__form__input,
+.to-do-list__item {
+  padding: 1.4rem;
+  display: flex;
+  align-items: center;
+  border-bottom: solid lightgrey 1px;
+}
+
+.main-app__title-section-wrapper {
+  justify-content: space-between;
+}
+
+.main-app__form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-app__form__input {
+  border: none;
+  border-bottom: solid lightgrey 1px;
+}
+
+.main-app__form__icon {
+  height: 1rem;
+  width: auto;
+  margin-right: 1rem;
+}
+
+.main-app__refresh-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.to-do-list__item {
+  position: relative;
+}
+
+.to-do-list__item__task {
+  margin-left: 1.5rem;
+}
+
+.to-do-list__item__icon {
+  right: 1rem;
+  position: absolute;
+  color: lightgray;
 }

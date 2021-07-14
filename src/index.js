@@ -1,7 +1,11 @@
 import './reset.css';
 import './style.css';
+// import html from './index.html';
+// import EnterIcon from './images/enter-icon.png';
 
-const toDoListDisplay = document.querySelector('.to-do-list');
+const mainApp = document.querySelector('.main-app');
+const form = document.querySelector('.main-app__form');
+const toDoListDisplay = document.querySelector('.main-app__to-do-list');
 
 const task1 = {
   description: 'wash car',
