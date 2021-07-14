@@ -63,6 +63,7 @@ body {
 
 .main-app__refresh-btn .fas {
   color: var(--mediumGrey);
+  cursor: pointer;
 }
 
 .main-app__form-add-task {
@@ -83,6 +84,7 @@ body {
   width: auto;
   margin-right: 1rem;
   opacity: 20%;
+  cursor: pointer;
 }
 
 .form-check-task__list__item {
@@ -97,6 +99,7 @@ body {
   right: 1rem;
   position: absolute;
   color: lightgray;
+  cursor: pointer;
 }
 
 .form-check-task__clear-btn {
@@ -107,4 +110,5 @@ body {
   display: flex;
   justify-content: center;
   color: var(--mediumGrey);
+  cursor: pointer;
 }
