@@ -1,12 +1,7 @@
 import './reset.css';
 import './style.css';
-/* import EnterIcon from './images/enter-icon.png'; */
 
-const mainApp = document.querySelector('.main-app');
-const formAddTask = document.querySelector('.main-app__form-add-task');
-const formCheckTask = document.querySelector('.main-app__form-check-task');
 const toDoListDisplay = document.querySelector('.form-check-task__list');
-const clearAllBtn = document.querySelector('.form-check-task__clear-btn');
 
 const task1 = {
   description: 'wash car',
