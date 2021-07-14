@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/2bdc450678.js" crossorigin="anonymous"></script>
   <title>To-Do List App</title>
 </head>
-<body>
-  <h1>To Do list</h1>
 
-  <ul class="to-do-list">
-    <li class="to-do-list__item"></li>
-  </ul>
+<body>
+  <main class="main-app">
+    <div class="main-app__title-section-wrapper">
+      <h1 class="main-app__title">To Do list</h1>
+      <button type="button" class="main-app__refresh-btn"><i class="fas fa-sync"></i></button>
+    </div>
+    <form action="#" class="main-app__form-add-task">
+      <!-- Inject JS here -->
+    </form>
+    <form action="#" class="main-app__form-check-task">
+      <ul class="form-check-task__list">
+          <!-- Inject JS here -->
+      </ul>
+      <button type="button" class="form-check-task__clear-btn">Clear all completed</button>
+    </form>
+  </main>
 </body>
+
 </html>
