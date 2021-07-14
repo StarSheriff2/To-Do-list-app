@@ -1,7 +1,12 @@
 import './reset.css';
 import './style.css';
+import EnterIcon from './images/enter-icon.png';
 
+const formAddTask = document.querySelector('.main-app__form-add-task');
 const toDoListDisplay = document.querySelector('.form-check-task__list');
+
+formAddTask.innerHTML = `<input type="text" name="task" id="task" placeholder="Add to your list..." class="form-add-task__input" required>
+<img alt="enter icon" src="${EnterIcon}" class="form-add-task__icon">`;
 
 const task1 = {
   description: 'wash car',
