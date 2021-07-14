@@ -60,6 +60,10 @@ body {
   background-color: transparent;
 }
 
+.to-do-list__form {
+  display: column;
+}
+
 .to-do-list__item {
   position: relative;
 }

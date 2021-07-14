@@ -15,19 +15,20 @@
       <h1 class="main-app__title">To Do list</h1>
       <button type="button" class="main-app__refresh-btn"><i class="fas fa-sync"></i></button>
     </div>
-    <form action="#" class="main-app__form">
+    <form action="#" class="main-app__form-add">
       <input type="text" name="task" id="task" placeholder="Add to your list..." class="main-app__form__input" required>
       <img src="./images/enter-icon.png" alt="enter icon" class="main-app__form__icon">
     </form>
-    <ul class="main-app__to-do-list">
-      <form action="#" class="to-do-list__form">
+    <form action="#" class="to-do-list__form-check">
+      <ul class="main-app__to-do-list">
         <li class="to-do-list__item" id="1">
           <input type="checkbox" name="remove-task" id="remove-task" value="1" class="to-do-list__form__input">
           <span class="to-do-list__item__task">take fluffy to the vet</span>
           <i class="to-do-list__item__icon fas fa-ellipsis-v"></i>
         </li>
-      </form>
-    </ul>
+        <button type="button" class="to-do-list__form__clear-btn">Clear all completed</button>
+      </ul>
+    </form>
   </main>
 </body>
 

@@ -6,6 +6,8 @@ import './style.css';
 const mainApp = document.querySelector('.main-app');
 const form = document.querySelector('.main-app__form');
 const toDoListDisplay = document.querySelector('.main-app__to-do-list');
+const toDoListFormCheckbox = document.querySelector('.to-do-list__form');
+const clearAllBtn = document.querySelector('.to-do-list__form__clear-btn');
 
 const task1 = {
   description: 'wash car',
@@ -28,7 +30,11 @@ const task3 = {
 const TO_DO_LIST_TASKS = [task1, task2, task3];
 
 const addTasktoDisplay = (task) => {
-  toDoListDisplay.innerHTML += `<li class="to-do-list__item" id="${task.index}">${task.description}</li>`;
+  const newItem = document.createElement('li');
+  newItem.innerHTML = `${task.description}`;
+  newItem.classList.add('to-do-list__item');
+  newItem.setAttribute('id', `${task.index}`);
+  toDoListFormCheckbox.insertBefore(newItem, clearAllBtn);
 }
 
 window.onload = TO_DO_LIST_TASKS.forEach(task => addTasktoDisplay(task));
