@@ -99,7 +99,7 @@ body {
   right: 1rem;
   position: absolute;
   color: lightgray;
-  cursor: pointer;
+  cursor: move;
 }
 
 .form-check-task__clear-btn {
