@@ -1,42 +1,41 @@
 import './reset.css';
 import './style.css';
-// import html from './index.html';
-// import EnterIcon from './images/enter-icon.png';
+/* import EnterIcon from './images/enter-icon.png'; */
 
 const mainApp = document.querySelector('.main-app');
-const form = document.querySelector('.main-app__form');
-const toDoListDisplay = document.querySelector('.main-app__to-do-list');
-const toDoListFormCheckbox = document.querySelector('.to-do-list__form');
-const clearAllBtn = document.querySelector('.to-do-list__form__clear-btn');
+const formAddTask = document.querySelector('.main-app__form-add-task');
+const formCheckTask = document.querySelector('.main-app__form-check-task');
+const toDoListDisplay = document.querySelector('.form-check-task__list');
+const clearAllBtn = document.querySelector('.form-check-task__clear-btn');
 
 const task1 = {
   description: 'wash car',
   completed: false,
   index: 0,
-}
+};
 
 const task2 = {
   description: 'take fluffy to the vet',
   completed: false,
   index: 1,
-}
+};
 
 const task3 = {
   description: 'finish regexp tutorial',
   completed: false,
   index: 2,
-}
+};
 
 const TO_DO_LIST_TASKS = [task1, task2, task3];
 
 const addTasktoDisplay = (task) => {
   const newItem = document.createElement('li');
-  newItem.innerHTML = `${task.description}`;
-  newItem.classList.add('to-do-list__item');
+  newItem.innerHTML = `<input type="checkbox" name="check-task" id="check-task" value="${task.index}" class="form-check-task__list__item__input">
+  <span class="form-check-task__list__item__task-description">${task.description}</span>
+  <i class="form-check-task__list__item__icon fas fa-ellipsis-v"></i>`;
+  newItem.classList.add('form-check-task__list__item');
   newItem.setAttribute('id', `${task.index}`);
-  toDoListFormCheckbox.insertBefore(newItem, clearAllBtn);
-}
+  toDoListDisplay.appendChild(newItem);
+};
 
-window.onload = TO_DO_LIST_TASKS.forEach(task => addTasktoDisplay(task));
-
-
+window.onload = TO_DO_LIST_TASKS.forEach((task) => addTasktoDisplay(task));

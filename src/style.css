@@ -19,15 +19,15 @@ body {
 }
 
 .main-app__title-section-wrapper,
-.main-app__form,
-.main-app__form__input,
-.main-app__to-do-list {
+.main-app__form-add-task,
+.main-app__form-check-task,
+.form-check-task__list__item {
   width: 100%;
 }
 
 .main-app__title-section-wrapper,
-.main-app__form__input,
-.to-do-list__item {
+.main-app__form-add-task,
+.form-check-task__list__item {
   padding: 1.4rem;
   display: flex;
   align-items: center;
@@ -38,41 +38,36 @@ body {
   justify-content: space-between;
 }
 
-.main-app__form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main-app__form__input {
-  border: none;
-  border-bottom: solid lightgrey 1px;
-}
-
-.main-app__form__icon {
-  height: 1rem;
-  width: auto;
-  margin-right: 1rem;
-}
-
 .main-app__refresh-btn {
   border: none;
   background-color: transparent;
 }
 
-.to-do-list__form {
-  display: column;
+.main-app__form-add-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.to-do-list__item {
+.form-add-task__input {
+  border: none;
+}
+
+.form-add-task__icon {
+  height: 1rem;
+  width: auto;
+  margin-right: 1rem;
+}
+
+.form-check-task__list__item {
   position: relative;
 }
 
-.to-do-list__item__task {
+.form-check-task__list__item__task-description {
   margin-left: 1.5rem;
 }
 
-.to-do-list__item__icon {
+.form-check-task__list__item__icon {
   right: 1rem;
   position: absolute;
   color: lightgray;
