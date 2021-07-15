@@ -1,21 +1,21 @@
 import toDoList from './tasks.js';
 
-const updateListItemId = (modifiedTaskList) => {
-  let counter = 0;
-  modifiedTaskList.forEach((item) => {
-    let div = item.firstChild;
-    div.setAttribute('id', `${counter}`);
-    div.firstChild.setAttribute('id', `task-${counter}`);
-    div.firstChild.setAttribute('value', `task-${counter}`);
-    counter += 1;
-  });
-};
+/* const updateListItemId = (draggedItem, displacedItem) => {
+  console.log('draggedItem: ', draggedItem);
+  console.log('displacedItem:', displacedItem);
+  console.log(toDoList.toDoListArray);
+  let movedItem = toDoList.toDoListArray[draggedItem.id];
+  toDoList.toDoListArray.splice(draggedItem.id, 1);
+  toDoList.toDoListArray.splice(displacedItem.id, 0, movedItem);
+  console.log(toDoList.toDoListArray);
 
-/* const updateTasksArray = (tasksArray, index, taskItem) => {
-  let taskDescription = taskItem.querySelector('.form-check-task__list__item__task-description');
-  tasksArray[index].description = taskDescription;
-  tasksArray[index].index = parseInt(index, 10);
 }; */
+
+const rearrangeItems = (draggedItem, displacedItem) => {
+  console.log(draggedItem, displacedItem);
+  const itemContainers = displacedItem.parentNode.parentNode.childNodes;
+  const dropZone = displacedItem.parentNode;
+}
 
 const dragstart_handler = (e) => {
   e.dataTransfer.setData('Text', e.target.id);
@@ -45,16 +45,19 @@ const dragleave_handler = (e) => {
 
 const drop_handler = (e) => {
   e.preventDefault();
-  if (e.target.className === 'form-check-task__list__item') {
+  const itemId = e.dataTransfer.getData("Text");
+  const draggedItem = document.getElementById(itemId);
+  if (e.target.className === 'form-check-task__list__item' && e.target.id !== itemId) {
     e.target.style.backgroundColor = '';
-    const itemId = e.dataTransfer.getData("Text");
-    const draggedItem = document.getElementById(itemId);
-    const itemContainers = e.target.parentNode.parentNode.childNodes;
+    /* const itemContainers = e.target.parentNode.parentNode.childNodes;
     const dropZone = e.target.parentNode;
-    const displacedItem = e.target;
-    dropZone.appendChild(draggedItem);
-    itemContainers[parseInt(itemId, 10)].appendChild(displacedItem);
-    // updateListItemId(itemContainers);
+    const displacedItem = e.target; */
+    toDoList.updateArray(itemId, e.target.id);
+    console.log(toDoList.toDoListArray);
+    // itemContainers[parseInt(itemId, 10)].appendChild(displacedItem);
+    // updateListItemId(draggedItem, displacedItem);
+  } else {
+    draggedItem.style.backgroundColor = '';
   }
 };
 
