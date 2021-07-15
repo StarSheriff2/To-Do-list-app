@@ -1,5 +1,9 @@
-const draggableItems = document.querySelectorAll('.form-check-task__list__item');
 const dropTargets = document.querySelectorAll('.form-check-task__list__drop-target');
+const draggableItems = document.querySelectorAll('.form-check-task__list__item');
+
+const sortItems = (tasksArray, insertedItem, movedItem) => {
+  tasksArray
+};
 
 const dragstart_handler = (e) => {
   e.dataTransfer.setData('Text', e.target.id);
@@ -12,7 +16,9 @@ const dragend_handler = (e) => {
 };
 
 const dragenter_handler = (e) => {
-  e.target.style.backgroundColor = 'azure';
+  if (e.target.className === 'form-check-task__list__item') {
+    e.target.style.backgroundColor = 'azure';
+  }
 };
 
 const dragover_handler = (e) => {
@@ -20,22 +26,32 @@ const dragover_handler = (e) => {
 };
 
 const dragleave_handler = (e) => {
-  e.target.style.backgroundColor = '';
+  if (e.target.className === 'form-check-task__list__item') {
+    e.target.style.backgroundColor = '';
+  }
 };
 
 const drop_handler = (e) => {
   e.preventDefault();
-  e.target.style.backgroundColor = '';
-  let data = e.dataTransfer.getData("Text");
-  console.log(e.target.parentNode.parentNode.children)
-  // e.target.appendChild(document.getElementById(data));
+  if (e.target.className === 'form-check-task__list__item') {
+    e.target.style.backgroundColor = '';
+    const itemId = e.dataTransfer.getData("Text");
+    const draggedItem = document.getElementById(itemId);
+    const itemContainers = e.target.parentNode.parentNode.children;
+    const dropZone = e.target.parentNode;
+    const displacedItem = e.target;
+    dropZone.appendChild(draggedItem);
+    itemContainers[parseInt(itemId, 10)].appendChild(displacedItem);
+  }
 };
 
 const addDragListenerToItem = (item) => {
   item.addEventListener('dragstart', dragstart_handler);
 
   item.addEventListener('dragend', dragend_handler);
+};
 
+const addDragListenerToDropTarget = (item) => {
   item.addEventListener('dragenter', dragenter_handler);
 
   item.addEventListener('dragover', dragover_handler);
@@ -65,5 +81,6 @@ export {
   dragover_handler,
   dragleave_handler,
   drop_handler,
-  addDragListenerToItem
+  addDragListenerToItem,
+  addDragListenerToDropTarget
 }

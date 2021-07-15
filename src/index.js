@@ -32,6 +32,7 @@ const TO_DO_LIST_TASKS = [task1, task2, task3];
 const addTasktoDisplay = (task) => {
   const newItem = document.createElement('li');
   newItem.classList.add('form-check-task__list__drop-target');
+  reorder.addDragListenerToDropTarget(newItem);
   const newDraggableItem = document.createElement('div');
   newDraggableItem.classList.add('form-check-task__list__item');
   newDraggableItem.setAttribute('draggable', 'true');
