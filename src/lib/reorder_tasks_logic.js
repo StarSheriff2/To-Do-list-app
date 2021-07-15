@@ -1,8 +1,16 @@
 const dropTargets = document.querySelectorAll('.form-check-task__list__drop-target');
 const draggableItems = document.querySelectorAll('.form-check-task__list__item');
 
-const sortItems = (tasksArray, insertedItem, movedItem) => {
-  tasksArray
+const sortItems = (modifiedTaskList) => {
+  let counter = 0;
+  modifiedTaskList.forEach((item) => {
+    console.log(item.firstChild);
+    let div = item.firstChild;
+    div.setAttribute('id', `${counter}`);
+    div.firstChild.setAttribute('id', `task-${counter}`);
+    div.firstChild.setAttribute('value', `task-${counter}`);
+    counter += 1;
+  });
 };
 
 const dragstart_handler = (e) => {
@@ -37,11 +45,12 @@ const drop_handler = (e) => {
     e.target.style.backgroundColor = '';
     const itemId = e.dataTransfer.getData("Text");
     const draggedItem = document.getElementById(itemId);
-    const itemContainers = e.target.parentNode.parentNode.children;
+    const itemContainers = e.target.parentNode.parentNode.childNodes;
     const dropZone = e.target.parentNode;
     const displacedItem = e.target;
     dropZone.appendChild(draggedItem);
     itemContainers[parseInt(itemId, 10)].appendChild(displacedItem);
+    sortItems(itemContainers);
   }
 };
 
