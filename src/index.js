@@ -1,33 +1,23 @@
 import './reset.css';
 import './style.css';
-import * as reorder from './lib/reorder_tasks_logic';
 import EnterIcon from './images/enter-icon.png';
+import toDoList from './lib/tasks.js';
+import Task from './lib/task.js'
+import * as reorder from './lib/reorder_tasks_logic.js';
 
 const formAddTask = document.querySelector('.main-app__form-add-task');
 const toDoListDisplay = document.querySelector('.form-check-task__list');
 
+let seedTasks = [
+  'wash car',
+  'take fluffy to the vet',
+  'finish regexp tutorial',
+  'take trash outside',
+  'take pills'
+]
+
 formAddTask.innerHTML = `<input type="text" name="task" id="task" placeholder="Add to your list..." class="form-add-task__input" required>
 <img alt="enter icon" src="${EnterIcon}" class="form-add-task__icon">`;
-
-const task1 = {
-  description: 'wash car',
-  completed: false,
-  index: 2,
-};
-
-const task2 = {
-  description: 'take fluffy to the vet',
-  completed: false,
-  index: 3,
-};
-
-const task3 = {
-  description: 'finish regexp tutorial',
-  completed: false,
-  index: 4,
-};
-
-const TO_DO_LIST_TASKS = [task1, task2, task3];
 
 const addTasktoDisplay = (task) => {
   const newItem = document.createElement('li');
@@ -45,18 +35,12 @@ const addTasktoDisplay = (task) => {
   toDoListDisplay.appendChild(newItem);
 };
 
-window.onload = TO_DO_LIST_TASKS.forEach((task) => addTasktoDisplay(task));
+const loadTasks = () => {
+  seedTasks.forEach((description) => {
+    let newTask = new Task(description, seedTasks.indexOf(description));
+    toDoList.addTaskToList(newTask);
+    addTasktoDisplay(newTask);
+  });
+}
 
-/* Drag and Drop Event Listeners */
-
-reorder.draggableItems.forEach((item) => item.addEventListener('dragstart', reorder.dragstart_handler));
-
-reorder.draggableItems.forEach((item) => item.addEventListener('dragend', reorder.dragend_handler));
-
-reorder.dropTargets.forEach((item) => item.addEventListener('dragenter', reorder.dragenter_handler));
-
-reorder.dropTargets.forEach((item) => item.addEventListener('dragover', reorder.dragover_handler));
-
-reorder.dropTargets.forEach((item) => item.addEventListener('dragleave', reorder.dragleave_handler));
-
-reorder.dropTargets.forEach((item) => item.addEventListener('drop', reorder.drop_handler));
+window.onload = loadTasks();

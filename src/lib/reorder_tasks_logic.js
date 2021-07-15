@@ -1,10 +1,8 @@
-const dropTargets = document.querySelectorAll('.form-check-task__list__drop-target');
-const draggableItems = document.querySelectorAll('.form-check-task__list__item');
+import toDoList from './tasks.js';
 
-const sortItems = (modifiedTaskList) => {
+const updateListItemId = (modifiedTaskList) => {
   let counter = 0;
   modifiedTaskList.forEach((item) => {
-    console.log(item.firstChild);
     let div = item.firstChild;
     div.setAttribute('id', `${counter}`);
     div.firstChild.setAttribute('id', `task-${counter}`);
@@ -12,6 +10,12 @@ const sortItems = (modifiedTaskList) => {
     counter += 1;
   });
 };
+
+/* const updateTasksArray = (tasksArray, index, taskItem) => {
+  let taskDescription = taskItem.querySelector('.form-check-task__list__item__task-description');
+  tasksArray[index].description = taskDescription;
+  tasksArray[index].index = parseInt(index, 10);
+}; */
 
 const dragstart_handler = (e) => {
   e.dataTransfer.setData('Text', e.target.id);
@@ -50,7 +54,7 @@ const drop_handler = (e) => {
     const displacedItem = e.target;
     dropZone.appendChild(draggedItem);
     itemContainers[parseInt(itemId, 10)].appendChild(displacedItem);
-    sortItems(itemContainers);
+    // updateListItemId(itemContainers);
   }
 };
 
@@ -70,20 +74,7 @@ const addDragListenerToDropTarget = (item) => {
   item.addEventListener('drop', drop_handler);
 };
 
-
-/* document.addEventListener("drop", function(event) {
-  event.preventDefault();
-  if ( event.target.className == "droptarget" ) {
-    document.getElementById("demo").style.color = "";
-    event.target.style.border = "";
-    var data = event.dataTransfer.getData("Text");
-    event.target.appendChild(document.getElementById(data));
-  }
-}); */
-
 export {
-  draggableItems,
-  dropTargets,
   dragstart_handler,
   dragend_handler,
   dragenter_handler,
@@ -91,5 +82,6 @@ export {
   dragleave_handler,
   drop_handler,
   addDragListenerToItem,
-  addDragListenerToDropTarget
+  addDragListenerToDropTarget,
+  // updateTasksArray
 }
