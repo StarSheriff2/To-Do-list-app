@@ -11,6 +11,10 @@ const CRUD = (() => {
     localStorage.setObj('myToDoList', toDoList.toDoListArray);
   };
 
+  const editTask = (e) => {
+
+  }
+
   /*
   const removeTask = (bookTitle) => {
     const book = getBook(bookTitle);

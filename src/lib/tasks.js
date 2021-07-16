@@ -22,6 +22,11 @@ class Tasks {
     this.toDoListArray.forEach((task, index) => task.updateIndex(index));
     localStorage.setObj('myToDoList', this.toDoListArray);
   }
+
+  deleteTask = (index) => {
+    this.toDoListArray.splice(index, 1);
+    this.updateIndexes();
+  }
 }
 
 const toDoList = new Tasks();
