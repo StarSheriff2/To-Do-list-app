@@ -13,7 +13,7 @@ class Tasks {
     this.toDoListArray.splice(movedItemId, 1);
     let targetIndex = this.toDoListArray.indexOf(displacedItem);
     this.toDoListArray.splice(targetIndex, 0, movedItem);
-    // this.updateIndexes(displacedItemId);
+    this.updateIndexes();
   }
 
   updateIndexes = () => {
@@ -21,7 +21,7 @@ class Tasks {
       this.toDoListArray[i].index = i;
     } */
     // this.toDoListArray.forEach((task, index) => console.log(index));
-    // this.toDoListArray.forEach((task, index) => task.updateIndex(index));
+    this.toDoListArray.forEach((task, index) => task.updateIndex(index));
   }
 }
 
