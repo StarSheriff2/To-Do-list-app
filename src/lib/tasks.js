@@ -23,6 +23,12 @@ class Tasks {
     localStorage.setObj('myToDoList', this.toDoListArray);
   }
 
+  updateDescription = (index, description) => {
+    const task = this.getTask(index);
+    task.description = description;
+    localStorage.setObj('myToDoList', this.toDoListArray);
+  }
+
   deleteTask = (index) => {
     this.toDoListArray.splice(index, 1);
     this.updateIndexes();
