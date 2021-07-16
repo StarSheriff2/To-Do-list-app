@@ -1,17 +1,17 @@
 import loadTask from './loader.js';
 import toDoList from './tasks.js';
 
-
 const CRUD = (() => {
   const addTask = (e) => {
     e.preventDefault();
     const description = e.srcElement.firstChild.value;
     const index = toDoList.toDoListArray.length;
-    console.log(e.srcElement.firstChild.value);
     loadTask(description, false, index);
+    e.srcElement.reset();
     localStorage.setObj('myToDoList', toDoList.toDoListArray);
   };
-/*
+
+  /*
   const removeTask = (bookTitle) => {
     const book = getBook(bookTitle);
     const bookLibraryIndex = myLibrary.indexOf(book);
@@ -19,12 +19,11 @@ const CRUD = (() => {
   }; */
 
   return {
-    addTask
+    addTask,
   };
 })();
 
 export default CRUD;
-
 
 /* const addBook = (e) => {
   e.preventDefault();

@@ -2,7 +2,7 @@ import './reset.css';
 import './style.css';
 import EnterIcon from './images/enter-icon.png';
 import storageModule from './lib/local_storage.js';
-import CRUD from './lib/crud_operations';
+import CRUD from './lib/crud_operations.js';
 
 const formAddTask = document.querySelector('.main-app__form-add-task');
 
