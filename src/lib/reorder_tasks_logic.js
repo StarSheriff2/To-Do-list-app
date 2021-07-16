@@ -7,6 +7,7 @@ const updateDomListItemId = (itemContainers) => {
     div.firstChild.id = `task-${i}`;
     div.firstChild.value = `task-${i}`;
   }
+  console.log(toDoList.toDoListArray)
 };
 
 const rearrangeItems = (draggedItem, displacedItem) => {

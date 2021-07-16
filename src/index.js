@@ -4,6 +4,7 @@ import EnterIcon from './images/enter-icon.png';
 import toDoList from './lib/tasks.js';
 import Task from './lib/task.js';
 import * as reorder from './lib/reorder_tasks_logic.js';
+import statusCheckboxChange from './lib/task_status.js';
 
 const formAddTask = document.querySelector('.main-app__form-add-task');
 const toDoListDisplay = document.querySelector('.form-check-task__list');
@@ -27,9 +28,21 @@ const addTasktoDisplay = (task) => {
   newDraggableItem.classList.add('form-check-task__list__item');
   newDraggableItem.setAttribute('draggable', 'true');
   newDraggableItem.setAttribute('id', `${task.index}`);
-  newDraggableItem.innerHTML = `<input type="checkbox" name="check-task" id="task-${task.index}" value="task-${task.index}" class="form-check-task__list__item__input">
-  <span class="form-check-task__list__item__task-description">${task.description}</span>
-  <i class="form-check-task__list__item__icon fas fa-ellipsis-v"></i>`;
+  const checkbox = document.createElement('input');
+  checkbox.setAttribute('type', 'checkbox');
+  checkbox.setAttribute('name', 'check-task');
+  checkbox.setAttribute('id', `task-${task.index}`);
+  checkbox.setAttribute('value', `task-${task.index}`);
+  checkbox.classList.add('form-check-task__list__item__input');
+  checkbox.addEventListener('change', statusCheckboxChange);
+  newDraggableItem.appendChild(checkbox);
+  const span = document.createElement('span');
+  span.classList.add('form-check-task__list__item__task-description');
+  span.innerHTML = `${task.description}`;
+  newDraggableItem.appendChild(span);
+  const ellipsisIcon = document.createElement('i');
+  ellipsisIcon.classList.add('form-check-task__list__item__icon', 'fas', 'fa-ellipsis-v');
+  newDraggableItem.appendChild(ellipsisIcon);
   reorder.addDragListenerToItem(newDraggableItem);
   newItem.appendChild(newDraggableItem);
   toDoListDisplay.appendChild(newItem);
