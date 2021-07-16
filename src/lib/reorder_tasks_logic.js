@@ -7,8 +7,6 @@ const updateDomListItemId = (itemContainers) => {
     div.firstChild.id = `task-${i}`;
     div.firstChild.value = `task-${i}`;
   }
-  itemContainers.forEach(i => console.log(i.firstChild));
-  console.log(toDoList.toDoListArray);
 };
 
 const rearrangeItems = (draggedItem, displacedItem) => {
@@ -17,37 +15,37 @@ const rearrangeItems = (draggedItem, displacedItem) => {
   itemsContainer.insertBefore(relocatedItemContainer, displacedItem.parentNode);
   const itemContainers = itemsContainer.childNodes;
   updateDomListItemId(itemContainers);
-}
+};
 
-const dragstart_handler = (e) => {
+const dragstartHandler = (e) => {
   e.dataTransfer.setData('Text', e.target.id);
   e.target.style.border = 'blue 2px solid';
 };
 
-const dragend_handler = (e) => {
+const dragendHandler = (e) => {
   e.target.style.border = 'none';
   e.target.style.borderBottom = 'solid lightgrey 1px';
 };
 
-const dragenter_handler = (e) => {
+const dragenterHandler = (e) => {
   if (e.target.className === 'form-check-task__list__item') {
     e.target.style.backgroundColor = 'azure';
   }
 };
 
-const dragover_handler = (e) => {
+const dragoverHandler = (e) => {
   e.preventDefault();
 };
 
-const dragleave_handler = (e) => {
+const dragleaveHandler = (e) => {
   if (e.target.className === 'form-check-task__list__item') {
     e.target.style.backgroundColor = '';
   }
 };
 
-const drop_handler = (e) => {
+const dropHandler = (e) => {
   e.preventDefault();
-  const itemId = e.dataTransfer.getData("Text");
+  const itemId = e.dataTransfer.getData('Text');
   const draggedItem = document.getElementById(itemId);
   if (e.target.className === 'form-check-task__list__item' && e.target.id !== itemId) {
     e.target.style.backgroundColor = '';
@@ -59,29 +57,28 @@ const drop_handler = (e) => {
 };
 
 const addDragListenerToItem = (item) => {
-  item.addEventListener('dragstart', dragstart_handler);
+  item.addEventListener('dragstart', dragstartHandler);
 
-  item.addEventListener('dragend', dragend_handler);
+  item.addEventListener('dragend', dragendHandler);
 };
 
 const addDragListenerToDropTarget = (item) => {
-  item.addEventListener('dragenter', dragenter_handler);
+  item.addEventListener('dragenter', dragenterHandler);
 
-  item.addEventListener('dragover', dragover_handler);
+  item.addEventListener('dragover', dragoverHandler);
 
-  item.addEventListener('dragleave', dragleave_handler);
+  item.addEventListener('dragleave', dragleaveHandler);
 
-  item.addEventListener('drop', drop_handler);
+  item.addEventListener('drop', dropHandler);
 };
 
 export {
-  dragstart_handler,
-  dragend_handler,
-  dragenter_handler,
-  dragover_handler,
-  dragleave_handler,
-  drop_handler,
+  dragstartHandler,
+  dragendHandler,
+  dragenterHandler,
+  dragoverHandler,
+  dragleaveHandler,
+  dropHandler,
   addDragListenerToItem,
   addDragListenerToDropTarget,
-  // updateTasksArray
-}
+};
