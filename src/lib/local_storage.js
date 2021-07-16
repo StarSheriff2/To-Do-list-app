@@ -1,7 +1,8 @@
-import toDoList from "./tasks.js";
-import loadTasks from "./loader.js";
+import Task from './task.js';
+import toDoList from './tasks.js';
+import addTasktoDisplay from './DOM_Renderer.js';
 
-const renderSeedTasks = () => {
+const storageModule = (() => {
   const seedTasks = [
     { description: 'wash car', completed: false, index: 0 },
     { description: 'take fluffy to the vet', completed: false, index: 1 },
@@ -10,13 +11,9 @@ const renderSeedTasks = () => {
     { description: 'take pills', completed: false, index: 4 },
   ];
 
-  loadTasks(seedTasks);
-}
-
-const storageModule = (() => {
   // Check Browser for LocalStorage Support and Availability
   // Code source: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
-  const _storageAvailable = (type) => {
+  const storageAvailable = (type) => {
     let storage;
     try {
       storage = window[type];
@@ -40,13 +37,17 @@ const storageModule = (() => {
     }
   };
 
-  const _loadStorageTasks = (storedTasks) => {
-    loadTasks(storedTasks);
+  const loadStorageTasks = (storedTasks) => {
+    storedTasks.forEach((task) => {
+      const newTask = new Task(task.description, task.completed, task.index);
+      toDoList.addTaskToList(newTask);
+      addTasktoDisplay(newTask);
+    });
   };
 
   const updateStorage = () => localStorage.setObj('myToDoList', toDoList.toDoListArray);
 
-  const _setStorageAccessMethods = () => {
+  const setStorageAccessMethods = () => {
     Storage.prototype.setObj = function setObj(key, obj) {
       return this.setItem(key, JSON.stringify(obj));
     };
@@ -57,21 +58,20 @@ const storageModule = (() => {
   };
 
   const load = () => {
-    if (_storageAvailable('localStorage')) {
-      _setStorageAccessMethods();
+    if (storageAvailable('localStorage')) {
+      setStorageAccessMethods();
       if (localStorage.length === 0) {
         if (toDoList.toDoListArray.length === 0) {
-          renderSeedTasks();
+          loadStorageTasks(seedTasks);
         }
         updateStorage();
       } else {
-        _loadStorageTasks(localStorage.getObj('myToDoList'));
+        loadStorageTasks(localStorage.getObj('myToDoList'));
       }
     }
   };
 
   return {
-    updateStorage,
     load,
   };
 })();

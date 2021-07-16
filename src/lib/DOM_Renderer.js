@@ -1,4 +1,4 @@
-import { addDragListenerToDropTarget, addDragListenerToItem } from "./reorder_tasks_logic.js";
+import { addDragListenerToDropTarget, addDragListenerToItem } from './reorder_tasks_logic.js';
 import statusCheckboxChange from './task_status.js';
 
 const toDoListDisplay = document.querySelector('.form-check-task__list');
@@ -18,11 +18,12 @@ const addTasktoDisplay = (task) => {
   checkbox.setAttribute('value', `task-${task.index}`);
   checkbox.classList.add('form-check-task__list__item__input');
   checkbox.addEventListener('change', statusCheckboxChange);
-  checkbox.checked = (task.completed === true) ? true: false;
+  checkbox.checked = task.completed;
   newDraggableItem.appendChild(checkbox);
   const span = document.createElement('span');
   span.classList.add('form-check-task__list__item__task-description');
   span.innerHTML = `${task.description}`;
+  if (task.completed) span.style.textDecoration = 'line-through';
   newDraggableItem.appendChild(span);
   const ellipsisIcon = document.createElement('i');
   ellipsisIcon.classList.add('form-check-task__list__item__icon', 'fas', 'fa-ellipsis-v');

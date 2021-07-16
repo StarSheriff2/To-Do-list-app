@@ -1,3 +1,5 @@
+// import storageModule from './local_storage.js';
+
 export default class Task {
   constructor(description, completed = false, index) {
     this.description = description;
@@ -7,5 +9,9 @@ export default class Task {
 
   updateIndex = (index) => {
     this.index = index;
+  }
+
+  updateStatus = (status) => {
+    this.completed = status;
   }
 }

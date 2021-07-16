@@ -1,4 +1,3 @@
-import storageModule from './local_storage.js';
 import toDoList from './tasks.js';
 
 const updateDomListItemId = (itemContainers) => {
@@ -8,7 +7,6 @@ const updateDomListItemId = (itemContainers) => {
     div.firstChild.id = `task-${i}`;
     div.firstChild.value = `task-${i}`;
   }
-  console.log(toDoList.toDoListArray)
 };
 
 const rearrangeItems = (draggedItem, displacedItem) => {
@@ -52,7 +50,7 @@ const dropHandler = (e) => {
   if (e.target.className === 'form-check-task__list__item' && e.target.id !== itemId) {
     e.target.style.backgroundColor = '';
     toDoList.updateArray(parseInt(itemId, 10), parseInt(e.target.id, 10));
-    storageModule.updateStorage();
+    localStorage.setObj('myToDoList', toDoList.toDoListArray);
     rearrangeItems(draggedItem, e.target);
   } else {
     draggedItem.style.backgroundColor = '';

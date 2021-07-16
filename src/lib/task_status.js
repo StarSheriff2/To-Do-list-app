@@ -1,4 +1,3 @@
-import storageModule from './local_storage.js';
 import toDoList from './tasks.js';
 
 const statusCheckboxChange = (e) => {
@@ -6,13 +5,13 @@ const statusCheckboxChange = (e) => {
   if (e.target.checked) {
     e.target.parentNode.children[1].style.textDecoration = 'line-through';
     const task = toDoList.getTask(itemId);
-    task.completed = true;
+    task.updateStatus(true);
   } else {
     e.target.parentNode.children[1].style.textDecoration = '';
     const task = toDoList.getTask(itemId);
-    task.completed = false;
+    task.updateStatus(false);
   }
-  storageModule.updateStorage();
+  localStorage.setObj('myToDoList', toDoList.toDoListArray);
 };
 
 export default statusCheckboxChange;
