@@ -1,8 +1,15 @@
+import loadTask from './loader.js';
+import toDoList from './tasks.js';
+
+
 const CRUD = (() => {
-  const addTask = () => {
-    /* const newTask = new Task(task.description, task.completed, task.index);
-    toDoList.addTaskToList(newTask);
-    addTasktoDisplay(newTask); */
+  const addTask = (e) => {
+    e.preventDefault();
+    const description = e.srcElement.firstChild.value;
+    const index = toDoList.toDoListArray.length;
+    console.log(e.srcElement.firstChild.value);
+    loadTask(description, false, index);
+    localStorage.setObj('myToDoList', toDoList.toDoListArray);
   };
 /*
   const removeTask = (bookTitle) => {
@@ -17,3 +24,16 @@ const CRUD = (() => {
 })();
 
 export default CRUD;
+
+
+/* const addBook = (e) => {
+  e.preventDefault();
+  bookCollection.addBookToCollection(
+    formAddBook.title.value,
+    formAddBook.author.value,
+  );
+  formAddBook.reset();
+  updateStorage();
+  addOneBookToDom(1);
+  displayContainer(0);
+}; */

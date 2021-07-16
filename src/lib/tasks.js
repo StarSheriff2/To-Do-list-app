@@ -20,6 +20,7 @@ class Tasks {
 
   updateIndexes = () => {
     this.toDoListArray.forEach((task, index) => task.updateIndex(index));
+    localStorage.setObj('myToDoList', toDoList.toDoListArray);
   }
 }
 

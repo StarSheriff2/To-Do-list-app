@@ -50,7 +50,6 @@ const dropHandler = (e) => {
   if (e.target.className === 'form-check-task__list__item' && e.target.id !== itemId) {
     e.target.style.backgroundColor = '';
     toDoList.updateArray(parseInt(itemId, 10), parseInt(e.target.id, 10));
-    localStorage.setObj('myToDoList', toDoList.toDoListArray);
     rearrangeItems(draggedItem, e.target);
   } else {
     draggedItem.style.backgroundColor = '';
