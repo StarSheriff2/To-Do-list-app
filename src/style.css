@@ -82,7 +82,7 @@ body {
 .form-add-task__icon {
   height: 2rem;
   width: auto;
-  margin-right: 1rem;
+  margin: 0 1rem;
   opacity: 20%;
   cursor: pointer;
 }
@@ -92,14 +92,15 @@ body {
 }
 
 .form-check-task__list__item__task-description {
-  margin-left: 1.5rem;
+  margin: 0 1.5rem;
+  width: 100%;
 }
 
 .form-check-task__list__item__icon {
   right: 1rem;
   position: absolute;
   color: lightgray;
-  cursor: pointer;
+  cursor: move;
 }
 
 .form-check-task__clear-btn {

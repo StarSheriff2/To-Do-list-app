@@ -31,11 +31,6 @@ Features:
 - webpack-dev-server
 - Linters: ESLint, Stylint, WebHint
 - VS Code
-
-## Live Demo
-
-[Live Demo Link](https://starsheriff2.github.io/To-Do-list-app/)
-
 ## Getting Started
 
 To get a local copy up and running, follow these simple example steps.
