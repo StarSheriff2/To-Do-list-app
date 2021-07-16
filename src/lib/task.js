@@ -5,7 +5,7 @@ export default class Task {
     this.index = index;
   }
 
-  updateIndex(index) {
+  updateIndex = (index) => {
     this.index = index;
   }
 }

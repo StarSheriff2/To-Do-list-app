@@ -1,20 +1,22 @@
 import toDoList from './tasks.js';
 
-/* const updateListItemId = (draggedItem, displacedItem) => {
-  console.log('draggedItem: ', draggedItem);
-  console.log('displacedItem:', displacedItem);
+const updateDomListItemId = (itemContainers) => {
+  for (let i = 0; i < itemContainers.length; i += 1) {
+    const div = itemContainers[i].firstChild;
+    div.id = i;
+    div.firstChild.id = `task-${i}`;
+    div.firstChild.value = `task-${i}`;
+  }
+  itemContainers.forEach(i => console.log(i.firstChild));
   console.log(toDoList.toDoListArray);
-  let movedItem = toDoList.toDoListArray[draggedItem.id];
-  toDoList.toDoListArray.splice(draggedItem.id, 1);
-  toDoList.toDoListArray.splice(displacedItem.id, 0, movedItem);
-  console.log(toDoList.toDoListArray);
-
-}; */
+};
 
 const rearrangeItems = (draggedItem, displacedItem) => {
-  console.log(draggedItem, displacedItem);
-  const itemContainers = displacedItem.parentNode.parentNode.childNodes;
-  const dropZone = displacedItem.parentNode;
+  const relocatedItemContainer = draggedItem.parentNode;
+  const itemsContainer = displacedItem.parentNode.parentNode;
+  itemsContainer.insertBefore(relocatedItemContainer, displacedItem.parentNode);
+  const itemContainers = itemsContainer.childNodes;
+  updateDomListItemId(itemContainers);
 }
 
 const dragstart_handler = (e) => {
@@ -49,13 +51,8 @@ const drop_handler = (e) => {
   const draggedItem = document.getElementById(itemId);
   if (e.target.className === 'form-check-task__list__item' && e.target.id !== itemId) {
     e.target.style.backgroundColor = '';
-    /* const itemContainers = e.target.parentNode.parentNode.childNodes;
-    const dropZone = e.target.parentNode;
-    const displacedItem = e.target; */
-    toDoList.updateArray(itemId, e.target.id);
-    console.log(toDoList.toDoListArray);
-    // itemContainers[parseInt(itemId, 10)].appendChild(displacedItem);
-    // updateListItemId(draggedItem, displacedItem);
+    toDoList.updateArray(parseInt(itemId, 10), parseInt(e.target.id, 10));
+    rearrangeItems(draggedItem, e.target);
   } else {
     draggedItem.style.backgroundColor = '';
   }
