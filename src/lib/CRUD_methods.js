@@ -1,5 +1,14 @@
 import toDoList from './tasks.js';
 
+const deleteTask = (e) => {
+  const index = parseInt(e.target.parentNode.id, 10);
+  const selectedTask = e.target.parentNode.parentNode;
+  const itemContainers = selectedTask.parentNode.childNodes;
+  selectedTask.remove();
+  toDoList.updateDomListItemId(itemContainers);
+  toDoList.deleteTask(index);
+};
+
 const editTask = (e) => {
   // console.log(e.target);
   e.stopPropagation();
@@ -18,6 +27,7 @@ const editTask = (e) => {
   trashCan.classList.add('form-check-task__list__item__icon', 'far', 'fa-trash-alt');
   trashCan.style.cursor = 'pointer';
   trashCan.style.color = 'grey';
+  trashCan.addEventListener('click', deleteTask);
   divContainer.appendChild(trashCan);
   divContainer.style.backgroundColor = 'rgb(237, 223, 148)';
 
@@ -41,8 +51,6 @@ const editTask = (e) => {
     divContainer.appendChild(storedEllipsisIcon);
     divContainer.style.backgroundColor = 'white';
   });
-
-  // console.log(newInput);
 };
 
 export {

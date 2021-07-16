@@ -30,9 +30,18 @@ class Tasks {
   }
 
   deleteTask = (index) => {
-    this.toDoListArray.splice(index, 1);
+    this.toDoListArray = this.toDoListArray.filter((task) => task.index !== index);
     this.updateIndexes();
   }
+
+  updateDomListItemId = (itemContainers) => {
+    for (let i = 0; i < itemContainers.length; i += 1) {
+      const div = itemContainers[i].firstChild;
+      div.id = i;
+      div.firstChild.id = `task-${i}`;
+      div.firstChild.value = `task-${i}`;
+    }
+  };
 }
 
 const toDoList = new Tasks();

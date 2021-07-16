@@ -17,11 +17,7 @@ const addTask = (e) => {
   localStorage.setObj('myToDoList', toDoList.toDoListArray);
 };
 
-const editTask = (e) => {
-  console.log('span click');
-};
-
 export {
   loadTask,
-  addTask
+  addTask,
 };
