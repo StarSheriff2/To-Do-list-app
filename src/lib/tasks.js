@@ -16,6 +16,8 @@ class Tasks {
     this.updateIndexes();
   }
 
+  getTask = (index) => this.toDoListArray[index];
+
   updateIndexes = () => {
     this.toDoListArray.forEach((task, index) => task.updateIndex(index));
   }
