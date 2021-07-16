@@ -10,8 +10,6 @@ const deleteTask = (e) => {
 };
 
 const editTask = (e) => {
-  // console.log(e.target);
-  e.stopPropagation();
   const divContainer = e.target.parentNode;
   const storedEllipsisIcon = divContainer.children[2];
   const newInput = document.createElement('input');
@@ -31,14 +29,12 @@ const editTask = (e) => {
   divContainer.appendChild(trashCan);
   divContainer.style.backgroundColor = 'rgb(237, 223, 148)';
 
-  window.addEventListener('click', (e) => {
-    if (e.target !== newInput && e.target !== divContainer) {
-      newInput.remove();
-      divContainer.insertBefore(storedSpan, divContainer.children[1]);
-      trashCan.remove();
-      divContainer.appendChild(storedEllipsisIcon);
-      divContainer.style.backgroundColor = 'white';
-    }
+  newInput.addEventListener('focusout', () => {
+    newInput.remove();
+    divContainer.insertBefore(storedSpan, divContainer.children[1]);
+    trashCan.remove();
+    divContainer.appendChild(storedEllipsisIcon);
+    divContainer.style.backgroundColor = 'white';
   });
 
   // let editedInput;
