@@ -1,4 +1,4 @@
-import toDoList from "./tasks.js";
+import toDoList from './tasks.js';
 
 const statusCheckboxChange = (e) => {
   const itemId = parseInt(e.target.parentNode.id, 10);
