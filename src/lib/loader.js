@@ -5,6 +5,7 @@ import addTasktoDisplay from './DOM_Renderer.js';
 const loadTasks = (tasks) => {
   tasks.forEach((task) => {
     const newTask = new Task(task.description, task.completed, task.index);
+    console.log(newTask);
     toDoList.addTaskToList(newTask);
     addTasktoDisplay(newTask);
   });

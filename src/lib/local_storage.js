@@ -44,7 +44,7 @@ const storageModule = (() => {
     loadTasks(storedTasks);
   };
 
-  const _updateStorage = () => localStorage.setObj('myToDoList', toDoList.toDoListArray);
+  const updateStorage = () => localStorage.setObj('myToDoList', toDoList.toDoListArray);
 
   const _setStorageAccessMethods = () => {
     Storage.prototype.setObj = function setObj(key, obj) {
@@ -63,7 +63,7 @@ const storageModule = (() => {
         if (toDoList.toDoListArray.length === 0) {
           renderSeedTasks();
         }
-        _updateStorage();
+        updateStorage();
       } else {
         _loadStorageTasks(localStorage.getObj('myToDoList'));
       }
@@ -71,6 +71,7 @@ const storageModule = (() => {
   };
 
   return {
+    updateStorage,
     load,
   };
 })();

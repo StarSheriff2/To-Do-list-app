@@ -1,3 +1,4 @@
+import storageModule from './local_storage.js';
 import toDoList from './tasks.js';
 
 const statusCheckboxChange = (e) => {
@@ -11,6 +12,7 @@ const statusCheckboxChange = (e) => {
     const task = toDoList.getTask(itemId);
     task.completed = false;
   }
+  storageModule.updateStorage();
 };
 
 export default statusCheckboxChange;

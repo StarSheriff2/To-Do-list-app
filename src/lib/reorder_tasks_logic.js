@@ -1,3 +1,4 @@
+import storageModule from './local_storage.js';
 import toDoList from './tasks.js';
 
 const updateDomListItemId = (itemContainers) => {
@@ -51,6 +52,7 @@ const dropHandler = (e) => {
   if (e.target.className === 'form-check-task__list__item' && e.target.id !== itemId) {
     e.target.style.backgroundColor = '';
     toDoList.updateArray(parseInt(itemId, 10), parseInt(e.target.id, 10));
+    storageModule.updateStorage();
     rearrangeItems(draggedItem, e.target);
   } else {
     draggedItem.style.backgroundColor = '';

@@ -18,6 +18,7 @@ const addTasktoDisplay = (task) => {
   checkbox.setAttribute('value', `task-${task.index}`);
   checkbox.classList.add('form-check-task__list__item__input');
   checkbox.addEventListener('change', statusCheckboxChange);
+  checkbox.checked = (task.completed === true) ? true: false;
   newDraggableItem.appendChild(checkbox);
   const span = document.createElement('span');
   span.classList.add('form-check-task__list__item__task-description');
