@@ -11,13 +11,6 @@ const CRUD = (() => {
     localStorage.setObj('myToDoList', toDoList.toDoListArray);
   };
 
-  /*
-  const removeTask = (bookTitle) => {
-    const book = getBook(bookTitle);
-    const bookLibraryIndex = myLibrary.indexOf(book);
-    myLibrary.splice(bookLibraryIndex, 1);
-  }; */
-
   return {
     addTask,
   };
