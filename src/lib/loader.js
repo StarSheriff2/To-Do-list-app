@@ -8,4 +8,16 @@ const loadTask = (description, completed, index) => {
   addTasktoDisplay(newTask);
 };
 
-export default loadTask;
+const addTask = (e) => {
+  e.preventDefault();
+  const description = e.srcElement.firstChild.value;
+  const index = toDoList.toDoListArray.length;
+  loadTask(description, false, index);
+  e.srcElement.reset();
+  localStorage.setObj('myToDoList', toDoList.toDoListArray);
+};
+
+export {
+  loadTask,
+  addTask,
+};

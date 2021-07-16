@@ -1,5 +1,5 @@
 import toDoList from './tasks.js';
-import loadTask from './loader.js';
+import { loadTask } from './loader.js';
 
 const storageModule = (() => {
   const seedTasks = [
