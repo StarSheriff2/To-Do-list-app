@@ -11,10 +11,6 @@ const CRUD = (() => {
     localStorage.setObj('myToDoList', toDoList.toDoListArray);
   };
 
-  const editTask = (e) => {
-
-  }
-
   /*
   const removeTask = (bookTitle) => {
     const book = getBook(bookTitle);
@@ -28,15 +24,3 @@ const CRUD = (() => {
 })();
 
 export default CRUD;
-
-/* const addBook = (e) => {
-  e.preventDefault();
-  bookCollection.addBookToCollection(
-    formAddBook.title.value,
-    formAddBook.author.value,
-  );
-  formAddBook.reset();
-  updateStorage();
-  addOneBookToDom(1);
-  displayContainer(0);
-}; */
