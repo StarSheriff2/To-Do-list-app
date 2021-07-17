@@ -1,20 +1,11 @@
 import toDoList from './tasks.js';
 
-const updateDomListItemId = (itemContainers) => {
-  for (let i = 0; i < itemContainers.length; i += 1) {
-    const div = itemContainers[i].firstChild;
-    div.id = i;
-    div.firstChild.id = `task-${i}`;
-    div.firstChild.value = `task-${i}`;
-  }
-};
-
 const rearrangeItems = (draggedItem, displacedItem) => {
   const relocatedItemContainer = draggedItem.parentNode;
   const itemsContainer = displacedItem.parentNode.parentNode;
   itemsContainer.insertBefore(relocatedItemContainer, displacedItem.parentNode);
   const itemContainers = itemsContainer.childNodes;
-  updateDomListItemId(itemContainers);
+  toDoList.updateDomListItemId(itemContainers);
 };
 
 const dragstartHandler = (e) => {

@@ -1,3 +1,4 @@
+import { editTask } from './CRUD_methods.js';
 import { addDragListenerToDropTarget, addDragListenerToItem } from './reorder_tasks_logic.js';
 import statusCheckboxChange from './task_status.js';
 
@@ -23,6 +24,7 @@ const addTasktoDisplay = (task) => {
   const span = document.createElement('span');
   span.classList.add('form-check-task__list__item__task-description');
   span.innerHTML = `${task.description}`;
+  span.addEventListener('dblclick', editTask);
   if (task.completed) span.style.textDecoration = 'line-through';
   newDraggableItem.appendChild(span);
   const ellipsisIcon = document.createElement('i');

@@ -1,10 +1,13 @@
+import Task from './task.js';
+
 class Tasks {
   constructor() {
     this.toDoListArray = [];
   }
 
-  addTaskToList = (task) => {
-    this.toDoListArray = this.toDoListArray.concat(task);
+  addTaskToList = (description, completed, index) => {
+    const newTask = new Task(description, completed, index);
+    this.toDoListArray = this.toDoListArray.concat(newTask);
   };
 
   updateArray = (movedItemId, displacedItemId) => {
@@ -23,10 +26,30 @@ class Tasks {
     localStorage.setObj('myToDoList', this.toDoListArray);
   }
 
+  updateDescription = (index, description) => {
+    const task = this.getTask(index);
+    task.description = description;
+    localStorage.setObj('myToDoList', this.toDoListArray);
+  }
+
   deleteTask = (index) => {
-    this.toDoListArray.splice(index, 1);
+    this.toDoListArray = this.toDoListArray.filter((task) => task.index !== index);
     this.updateIndexes();
   }
+
+  deleteAllTasks = (indexes) => {
+    this.toDoListArray = this.toDoListArray.filter((task) => !indexes.includes(task.index));
+    this.updateIndexes();
+  }
+
+  updateDomListItemId = (itemContainers) => {
+    for (let i = 0; i < itemContainers.length; i += 1) {
+      const div = itemContainers[i].firstChild;
+      div.id = i;
+      div.firstChild.id = `task-${i}`;
+      div.firstChild.value = `task-${i}`;
+    }
+  };
 }
 
 const toDoList = new Tasks();

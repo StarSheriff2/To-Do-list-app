@@ -1,15 +1,6 @@
-import toDoList from './tasks.js';
 import { loadTask } from './loader.js';
 
 const storageModule = (() => {
-  const seedTasks = [
-    { description: 'wash car', completed: false, index: 0 },
-    { description: 'take fluffy to the vet', completed: false, index: 1 },
-    { description: 'finish regexp tutorial', completed: false, index: 2 },
-    { description: 'take trash outside', completed: false, index: 3 },
-    { description: 'take pills', completed: false, index: 4 },
-  ];
-
   // Check Browser for LocalStorage Support and Availability
   // Code source: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
   const storageAvailable = (type) => {
@@ -42,8 +33,6 @@ const storageModule = (() => {
     });
   };
 
-  const updateStorage = () => localStorage.setObj('myToDoList', toDoList.toDoListArray);
-
   const setStorageAccessMethods = () => {
     Storage.prototype.setObj = function setObj(key, obj) {
       return this.setItem(key, JSON.stringify(obj));
@@ -57,12 +46,7 @@ const storageModule = (() => {
   const load = () => {
     if (storageAvailable('localStorage')) {
       setStorageAccessMethods();
-      if (localStorage.length === 0) {
-        if (toDoList.toDoListArray.length === 0) {
-          loadStorageTasks(seedTasks);
-        }
-        updateStorage();
-      } else {
+      if (localStorage.length > 0) {
         loadStorageTasks(localStorage.getObj('myToDoList'));
       }
     }
