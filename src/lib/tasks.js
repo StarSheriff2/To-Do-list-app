@@ -1,10 +1,13 @@
+import Task from './task.js';
+
 class Tasks {
   constructor() {
     this.toDoListArray = [];
   }
 
-  addTaskToList = (task) => {
-    this.toDoListArray = this.toDoListArray.concat(task);
+  addTaskToList = (description, completed, index) => {
+    const newTask = new Task(description, completed, index);
+    this.toDoListArray = this.toDoListArray.concat(newTask);
   };
 
   updateArray = (movedItemId, displacedItemId) => {
