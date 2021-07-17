@@ -1,4 +1,4 @@
-import { loadTask } from './loader.js';
+import loadTask from './loader.js';
 
 const storageModule = (() => {
   // Check Browser for LocalStorage Support and Availability

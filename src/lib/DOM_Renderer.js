@@ -1,4 +1,6 @@
+/* eslint-disable */
 import { editTask } from './CRUD_methods.js';
+/* eslint-enable */
 import { addDragListenerToDropTarget, addDragListenerToItem } from './reorder_tasks_logic.js';
 import statusCheckboxChange from './task_status.js';
 
