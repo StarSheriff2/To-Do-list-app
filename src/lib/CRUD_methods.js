@@ -19,25 +19,25 @@ const editTask = (e) => {
   const storedSpan = e.target;
   e.target.remove();
   divContainer.insertBefore(newInput, divContainer.children[1]);
-  newInput.focus();
-  divContainer.children[2].remove();
   const trashCan = document.createElement('i');
+  trashCan.addEventListener('click', deleteTask);
+  divContainer.children[2].remove();
   trashCan.classList.add('form-check-task__list__item__icon', 'far', 'fa-trash-alt');
   trashCan.style.cursor = 'pointer';
   trashCan.style.color = 'grey';
-  trashCan.addEventListener('click', deleteTask);
   divContainer.appendChild(trashCan);
   divContainer.style.backgroundColor = 'rgb(237, 223, 148)';
 
-  newInput.addEventListener('focusout', () => {
-    newInput.remove();
-    divContainer.insertBefore(storedSpan, divContainer.children[1]);
-    trashCan.remove();
-    divContainer.appendChild(storedEllipsisIcon);
-    divContainer.style.backgroundColor = 'white';
+  window.addEventListener('click', (e) => {
+    if (e.target.value !== storedSpan.textContent) {
+      newInput.remove();
+      divContainer.insertBefore(storedSpan, divContainer.children[1]);
+      trashCan.remove();
+      divContainer.appendChild(storedEllipsisIcon);
+      divContainer.style.backgroundColor = 'white';
+    }
   });
 
-  // let editedInput;
   newInput.addEventListener('change', (e) => {
     storedSpan.textContent = e.target.value;
     toDoList.updateDescription(parseInt(divContainer.id, 10), e.target.value);
@@ -49,6 +49,23 @@ const editTask = (e) => {
   });
 };
 
+const deleteCompletedTasks = (e) => {
+  let allTaskContainers = Array.from(e.target.form.firstChild.childNodes);
+  const completedTasksByIndex = [];
+  allTaskContainers.forEach((container) => {
+    if (container.firstChild.firstChild.checked) {
+      completedTasksByIndex.push(allTaskContainers.indexOf(container));
+    }
+  });
+  toDoList.deleteAllTasks(completedTasksByIndex);
+  allTaskContainers = e.target.form.firstChild.childNodes;
+  for (let i = 0; i < completedTasksByIndex.length; i += 1) {
+    allTaskContainers[completedTasksByIndex[i] - i].remove();
+  }
+  toDoList.updateDomListItemId(allTaskContainers);
+};
+
 export {
   editTask,
+  deleteCompletedTasks,
 };

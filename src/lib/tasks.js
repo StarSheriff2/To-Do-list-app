@@ -34,6 +34,11 @@ class Tasks {
     this.updateIndexes();
   }
 
+  deleteAllTasks = (indexes) => {
+    this.toDoListArray = this.toDoListArray.filter((task) => !indexes.includes(task.index));
+    this.updateIndexes();
+  }
+
   updateDomListItemId = (itemContainers) => {
     for (let i = 0; i < itemContainers.length; i += 1) {
       const div = itemContainers[i].firstChild;
