@@ -92,15 +92,14 @@ body {
   padding: 0 1.4rem;
 }
 
-.form-check-task__list__item:hover,
-.form-check-task__list__item__task-description:hover {
-  cursor: text;
-}
-
 .form-check-task__list__item__task-description {
   margin: 0 1.5rem;
   width: 100%;
   padding: 1.6rem 0;
+}
+
+.form-check-task__list__item__task-description:hover {
+  cursor: text;
 }
 
 .form-check-task__list__item__input-edit {
