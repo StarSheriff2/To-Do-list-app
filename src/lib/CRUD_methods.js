@@ -3,13 +3,10 @@ import toDoList from './tasks.js';
 import addTasktoDisplay from './DOM_Renderer.js';
 /* eslint-enable */
 
-const addTask = (e) => {
-  e.preventDefault();
-  const description = e.srcElement.firstChild.value;
+const addTask = (description) => {
   const index = toDoList.toDoListArray.length;
   toDoList.addTaskToList(description, false, index);
   addTasktoDisplay(toDoList.toDoListArray[toDoList.toDoListArray.length - 1]);
-  e.srcElement.reset();
   localStorage.setObj('myToDoList', toDoList.toDoListArray);
 };
 
