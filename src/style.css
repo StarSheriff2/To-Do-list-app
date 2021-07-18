@@ -102,6 +102,8 @@ body {
   width: 100%;
   padding: 0;
   font-size: 1.6rem;
+  outline: none;
+  background-color: transparent;
 }
 
 .form-check-task__list__item__icon {

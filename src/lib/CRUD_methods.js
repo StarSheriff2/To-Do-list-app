@@ -30,6 +30,7 @@ const editTask = (e) => {
   newInput.classList.add('form-check-task__list__item__input-edit');
   newInput.setAttribute('value', e.target.textContent);
   const storedSpan = e.target;
+  const temp = e.target;
   divContainer.insertBefore(newInput, divContainer.children[1]);
   const trashCan = document.createElement('i');
   trashCan.addEventListener('click', deleteTask);
@@ -37,11 +38,14 @@ const editTask = (e) => {
   trashCan.style.cursor = 'pointer';
   trashCan.style.color = 'grey';
 
-  newInput.addEventListener('focus', () => {
-    e.target.remove();
+  newInput.addEventListener('focus', (e) => {
+    temp.remove();
+    const val = newInput.value;
+    e.target.value = '';
+    e.target.value = val;
     divContainer.children[2].remove();
     divContainer.appendChild(trashCan);
-    divContainer.style.backgroundColor = 'rgb(237, 223, 148)';
+    divContainer.style.backgroundColor = 'aliceblue';
   });
 
   newInput.focus();
