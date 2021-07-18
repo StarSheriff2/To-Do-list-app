@@ -51,11 +51,6 @@ body {
   justify-content: space-between;
 }
 
-.form-add-task__input::placeholder {
-  font-size: 1.6rem;
-  font-style: italic;
-}
-
 .main-app__refresh-btn {
   border: none;
   background-color: transparent;
@@ -70,13 +65,24 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
+  padding: 1.2rem 0;
 }
 
 .form-add-task__input {
   border: none;
   margin: 0;
-  padding: 1.4rem;
+  padding: 0 1.6rem;
+  font-size: 1.6rem;
+}
+
+.form-add-task__input:focus {
+  outline: none;
+  font-size: 1.6rem;
+}
+
+.form-add-task__input::placeholder {
+  font-size: 1.6rem;
+  font-style: italic;
 }
 
 .form-add-task__icon {
@@ -89,19 +95,27 @@ body {
 
 .form-check-task__list__item {
   position: relative;
+  padding: 0 1.4rem;
 }
 
 .form-check-task__list__item__task-description {
   margin: 0 1.5rem;
   width: 100%;
+  padding: 1.6rem 0;
+}
+
+.form-check-task__list__item__task-description:hover {
+  cursor: text;
 }
 
 .form-check-task__list__item__input-edit {
   border: none;
   margin: 0 1.5rem;
   width: 100%;
-  padding: 0;
+  padding: 1.6rem 0;
   font-size: 1.6rem;
+  outline: none;
+  background-color: transparent;
 }
 
 .form-check-task__list__item__icon {

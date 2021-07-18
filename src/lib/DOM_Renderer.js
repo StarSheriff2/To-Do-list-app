@@ -26,7 +26,7 @@ const addTasktoDisplay = (task) => {
   const span = document.createElement('span');
   span.classList.add('form-check-task__list__item__task-description');
   span.innerHTML = `${task.description}`;
-  span.addEventListener('dblclick', editTask);
+  span.addEventListener('click', editTask);
   if (task.completed) span.style.textDecoration = 'line-through';
   newDraggableItem.appendChild(span);
   const ellipsisIcon = document.createElement('i');

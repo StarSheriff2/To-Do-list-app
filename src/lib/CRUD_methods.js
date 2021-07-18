@@ -3,13 +3,10 @@ import toDoList from './tasks.js';
 import addTasktoDisplay from './DOM_Renderer.js';
 /* eslint-enable */
 
-const addTask = (e) => {
-  e.preventDefault();
-  const description = e.srcElement.firstChild.value;
+const addTask = (description) => {
   const index = toDoList.toDoListArray.length;
   toDoList.addTaskToList(description, false, index);
   addTasktoDisplay(toDoList.toDoListArray[toDoList.toDoListArray.length - 1]);
-  e.srcElement.reset();
   localStorage.setObj('myToDoList', toDoList.toDoListArray);
 };
 
@@ -30,25 +27,34 @@ const editTask = (e) => {
   newInput.classList.add('form-check-task__list__item__input-edit');
   newInput.setAttribute('value', e.target.textContent);
   const storedSpan = e.target;
-  e.target.remove();
+  const temp = e.target;
   divContainer.insertBefore(newInput, divContainer.children[1]);
   const trashCan = document.createElement('i');
   trashCan.addEventListener('click', deleteTask);
-  divContainer.children[2].remove();
   trashCan.classList.add('form-check-task__list__item__icon', 'far', 'fa-trash-alt');
   trashCan.style.cursor = 'pointer';
   trashCan.style.color = 'grey';
-  divContainer.appendChild(trashCan);
-  divContainer.style.backgroundColor = 'rgb(237, 223, 148)';
 
-  window.addEventListener('click', (e) => {
-    if (e.target.value !== storedSpan.textContent) {
-      newInput.remove();
-      divContainer.insertBefore(storedSpan, divContainer.children[1]);
+  newInput.addEventListener('focus', (e) => {
+    temp.remove();
+    const val = newInput.value;
+    e.target.value = '';
+    e.target.value = val;
+    divContainer.children[2].remove();
+    divContainer.appendChild(trashCan);
+    divContainer.style.backgroundColor = 'aliceblue';
+  });
+
+  newInput.focus();
+
+  newInput.addEventListener('blur', () => {
+    setTimeout(() => {
       trashCan.remove();
       divContainer.appendChild(storedEllipsisIcon);
-      divContainer.style.backgroundColor = 'white';
-    }
+    }, 300);
+    newInput.remove();
+    divContainer.insertBefore(storedSpan, divContainer.children[1]);
+    divContainer.style.backgroundColor = 'white';
   });
 
   newInput.addEventListener('change', (e) => {
