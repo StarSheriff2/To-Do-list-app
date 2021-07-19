@@ -22,6 +22,10 @@ Features:
 - remove completed tasks from the list
 - drag and drop tasks to change their order
 
+## Live Demo
+
+See demo here [https://starsheriff2.github.io/To-Do-list-app/](https://starsheriff2.github.io/To-Do-list-app/)
+
 ## Built With
 
 - HTML, CSS, JS
