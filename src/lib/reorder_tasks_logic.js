@@ -4,7 +4,7 @@ const rearrangeItems = (draggedItem, displacedItem) => {
   const relocatedItemContainer = draggedItem.parentNode;
   const itemsContainer = displacedItem.parentNode.parentNode;
   itemsContainer.insertBefore(relocatedItemContainer, displacedItem.parentNode);
-  const itemContainers = itemsContainer.childNodes;
+  const itemContainers = itemsContainer.children;
   toDoList.updateDomListItemId(itemContainers);
 };
 

@@ -13,7 +13,7 @@ const addTask = (description) => {
 const deleteTask = (e) => {
   const index = parseInt(e.target.parentNode.id, 10);
   const selectedTask = e.target.parentNode.parentNode;
-  const itemContainers = selectedTask.parentNode.childNodes;
+  const itemContainers = selectedTask.parentNode.children;
   selectedTask.remove();
   toDoList.updateDomListItemId(itemContainers);
   toDoList.deleteTask(index);
@@ -40,6 +40,7 @@ const editTask = (e) => {
     const val = newInput.value;
     e.target.value = '';
     e.target.value = val;
+    e.target.setAttribute('onmousedown', 'return false');
     divContainer.children[2].remove();
     divContainer.appendChild(trashCan);
     divContainer.style.backgroundColor = 'aliceblue';
@@ -69,18 +70,24 @@ const editTask = (e) => {
 };
 
 const deleteCompletedTasks = (e) => {
-  let allTaskContainers = Array.from(e.target.form.firstChild.childNodes);
+  let allTaskContainers = Array.from(e.target.form.children[0].children);
   const completedTasksByIndex = [];
+
   allTaskContainers.forEach((container) => {
     if (container.firstChild.firstChild.checked) {
       completedTasksByIndex.push(allTaskContainers.indexOf(container));
     }
   });
+
   toDoList.deleteAllTasks(completedTasksByIndex);
-  allTaskContainers = e.target.form.firstChild.childNodes;
+
+  allTaskContainers = e.target.form.children[0].childNodes;
+
   for (let i = 0; i < completedTasksByIndex.length; i += 1) {
     allTaskContainers[completedTasksByIndex[i] - i].remove();
   }
+
+  allTaskContainers = e.target.form.children[0].children;
   toDoList.updateDomListItemId(allTaskContainers);
 };
 
