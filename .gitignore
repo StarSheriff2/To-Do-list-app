@@ -1,2 +1,4 @@
 node_modules
 to-do-list-app.code-workspace
+.DS_Store
+other/.DS_Store
