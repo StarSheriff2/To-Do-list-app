@@ -24,7 +24,7 @@ Features:
 
 ## Live Demo
 
-See demo here [https://starsheriff2.github.io/To-Do-list-app/](https://starsheriff2.github.io/To-Do-list-app/)
+Go here to see a live demo: [https://starsheriff2.github.io/To-Do-list-app/](https://starsheriff2.github.io/To-Do-list-app/)
 
 ## Built With
 
